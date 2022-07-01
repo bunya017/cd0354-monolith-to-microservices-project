@@ -1,7 +1,8 @@
+sudo: 'required'
+
 language: node_js
 node_js:
   - 14
-
 services:
   - docker
 
@@ -25,4 +26,3 @@ after_script:
   - docker push bunya017/udagram-api-user:v1
   - docker push bunya017/udagram-frontend:v1
   - docker push bunya017/reverseproxy:v1
-  
