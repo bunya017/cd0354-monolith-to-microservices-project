@@ -10,19 +10,19 @@ before_script:
   - echo "Udagram Image Filtering Application"
 
 script:
-  - docker build -t udagram-frontend ./udagram-frontend
-  - docker tag udagram-frontend bunya017/udagram-frontend:latest
-  - docker build -t udagram-api-feed ./udagram-api-feed
-  - docker tag udagram-api-feed bunya017/udagram-api-feed:latest
-  - docker build -t udagram-api-user ./udagram-api-user
-  - docker tag udagram-api-user bunya017/udagram-api-user:latest
-  - docker build -t reverseproxy ./udagram-reverseproxy
-  - docker tag reverseproxy bunya017/reverseproxy:latest
+  - docker build -t udagram-frontend ./udagram-frontend:v2
+  - docker tag udagram-frontend bunya017/udagram-frontend:v2
+  - docker build -t udagram-api-feed ./udagram-api-feed:v2
+  - docker tag udagram-api-feed bunya017/udagram-api-feed:v2
+  - docker build -t udagram-api-user ./udagram-api-user:v2
+  - docker tag udagram-api-user bunya017/udagram-api-user:v2
+  - docker build -t reverseproxy ./udagram-reverseproxy:v2
+  - docker tag reverseproxy bunya017/reverseproxy:v2
 
 after_script:
   - docker images
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push bunya017/udagram-api-feed:latest
-  - docker push bunya017/udagram-api-user:latest
-  - docker push bunya017/udagram-frontend:latest
-  - docker push bunya017/reverseproxy:latest
+  - docker push bunya017/udagram-api-feed:v2
+  - docker push bunya017/udagram-api-user:v2
+  - docker push bunya017/udagram-frontend:v2
+  - docker push bunya017/reverseproxy:v2
