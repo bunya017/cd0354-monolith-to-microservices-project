@@ -17,6 +17,11 @@ spec:
       containers:
       - image: bunya017/udagram-api-feed
         name: backend-feed
+        resources:
+          limits:
+            cpu: "500m"
+          requests:
+            cpu: "200m"
         env:
         - name: URL
           valueFrom:
